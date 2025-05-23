@@ -1,0 +1,50 @@
+name: Publish (alpha / beta)
+
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        type: choice
+        description: NPM channel
+        options:
+          - alpha
+          - beta
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  publish-npm:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20  
+          registry-url: https://registry.npmjs.org/
+          cache: 'npm'
+          cache-dependency-path: ./package-lock.json
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build packages
+        run: npx lerna run build
+
+      - name: Create GitHub prerelease
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          RELEASE_TAG=v$(node -p "require('./lerna.json').version")
+          gh release create $RELEASE_TAG --prerelease --title "$RELEASE_TAG" --target $GITHUB_SHA --generate-notes
+
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx lerna publish from-package --yes --pre-dist-tag ${{ github.event.inputs.channel }}

@@ -1,36 +1,50 @@
-name: Unit tests
+name: Publish (alpha / beta)
 
 on:
-  push:
+  workflow_dispatch:
+    inputs:
+      channel:
+        type: choice
+        description: NPM channel
+        options:
+          - alpha
+          - beta
+
+permissions:
+  contents: write
+  packages: write  # Needed for publishing to GitHub Packages (optional)
 
 jobs:
-  common:
+  publish-npm:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: .
-
-    strategy:
-      matrix:
-        node-version: [20.x]  # Updated Node version to meet Lerna 8+ requirements
+        working-directory: ./
 
     steps:
       - uses: actions/checkout@v3
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: npm
+          node-version: 20  
+          registry-url: https://registry.npmjs.org/
+          cache: 'npm'
           cache-dependency-path: ./package-lock.json
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build packages
+      - name: Build all packages
         run: npx lerna run build
 
-      - name: Run tests
-        run: npx lerna run test
+      - name: Create GitHub prerelease
         env:
-          CI: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          RELEASE_TAG="v$(node -p "require('./lerna.json').version")"
+          gh release create "$RELEASE_TAG" --prerelease --title "$RELEASE_TAG" --target "$GITHUB_SHA" --generate-notes
+
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx lerna publish from-package --yes --pre-dist-tag ${{ github.event.inputs.channel }}

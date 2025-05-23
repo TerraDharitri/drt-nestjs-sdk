@@ -12,7 +12,6 @@ on:
 
 permissions:
   contents: write
-  packages: write
 
 jobs:
   publish-npm:
@@ -20,31 +19,25 @@ jobs:
     defaults:
       run:
         working-directory: ./
-
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
-          node-version: 20  
+          node-version: 16
           registry-url: https://registry.npmjs.org/
-          cache: 'npm'
           cache-dependency-path: ./package-lock.json
 
-      - name: Install dependencies
-        run: npm install
+      - run: npx lerna@6 bootstrap
+      - run: npx lerna@6 run build
 
-      - name: Build packages
-        run: npx lerna run build
-
-      - name: Create GitHub prerelease
+      - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           RELEASE_TAG=v$(node -p "require('./lerna.json').version")
-          gh release create $RELEASE_TAG --prerelease --title "$RELEASE_TAG" --target $GITHUB_SHA --generate-notes
+          gh release create --prerelease $RELEASE_TAG --target=$GITHUB_SHA --title="$RELEASE_TAG" --generate-notes
 
-      - name: Publish to npm
+      - name: Publish to npmjs
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx lerna publish from-package --yes --pre-dist-tag ${{ github.event.inputs.channel }}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        run: npx lerna publish from-package --yes --dist-tag ${{ github.event.inputs.channel }} --pre-dist-tag ${{ github.event.inputs.channel }}

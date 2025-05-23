@@ -1,50 +1,39 @@
-name: Publish (alpha / beta)
+name: Publish
 
 on:
   workflow_dispatch:
-    inputs:
-      channel:
-        type: choice
-        description: NPM channel
-        options:
-          - alpha
-          - beta
 
 permissions:
   contents: write
-  packages: write  # Needed for publishing to GitHub Packages (optional)
 
 jobs:
-  publish-npm:
+  common:
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./
-
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
-          node-version: 20  
+          node-version: 16
           registry-url: https://registry.npmjs.org/
-          cache: 'npm'
           cache-dependency-path: ./package-lock.json
 
-      - name: Install dependencies
-        run: npm ci
+      - run: npx lerna@6 bootstrap
+      - run: npx lerna@6 run build
 
-      - name: Build all packages
-        run: npx lerna run build
-
-      - name: Create GitHub prerelease
+      - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          RELEASE_TAG="v$(node -p "require('./lerna.json').version")"
-          gh release create "$RELEASE_TAG" --prerelease --title "$RELEASE_TAG" --target "$GITHUB_SHA" --generate-notes
+          echo " - Split main [sdk-nestjs](https://www.npmjs.com/package/@terradharitri/sdk-nestjs) package into multiple packages" >> notes.txt
+          echo "" >> notes.txt
 
-      - name: Publish to npm
+          RELEASE_TAG=v$(node -p "require('./lerna.json').version")
+          gh release create $RELEASE_TAG --target=$GITHUB_SHA --title="$RELEASE_TAG" --generate-notes --notes-file=notes.txt
+
+      - name: Publish to npmjs
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx lerna publish from-package --yes --pre-dist-tag ${{ github.event.inputs.channel }}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        run: npx lerna@6 publish from-package --yes

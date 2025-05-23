@@ -1,6 +1,6 @@
 {
   "name": "@terradharitri/sdk-nestjs-rabbitmq",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Dharitri SDK Nestjs rabbitmq client package",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TerraDharitri/drt-nestjs-sdk.git"
+    "url": "git+https://github.com/TerraDharitri/drt-sdk-nestjs.git"
   },
   "keywords": [
     "dharitri",
@@ -33,12 +33,12 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@golevelup/nestjs-rabbitmq": "^3.0.0",
+    "@golevelup/nestjs-rabbitmq": "4.0.0",
     "uuid": "^8.3.2"
   },
   "peerDependencies": {
-    "@terradharitri/sdk-nestjs-common": "*",
-    "@nestjs/common": "^9.x"
+    "@terradharitri/sdk-nestjs-common": "0.0.5",
+    "@nestjs/common": "^10.x"
   },
   "publishConfig": {
     "access": "public"

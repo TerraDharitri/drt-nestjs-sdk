@@ -1,6 +1,6 @@
 {
   "name": "@terradharitri/sdk-nestjs-http",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Dharitri SDK Nestjs http package",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TerraDharitri/drt-nestjs-sdk.git"
+    "url": "git+https://github.com/TerraDharitri/drt-sdk-nestjs.git"
   },
   "keywords": [
     "dharitri",
@@ -38,10 +38,11 @@
     "axios": "^0.27.2"
   },
   "peerDependencies": {
-    "@terradharitri/sdk-nestjs-common": "*",
-    "@terradharitri/sdk-nestjs-monitoring": "*",
+    "@terradharitri/sdk-nestjs-common": "0.0.5",
+    "@terradharitri/sdk-nestjs-monitoring": "0.0.5",
     "@terradharitri/sdk-wallet": "0.0.5",
-    "@nestjs/common": "^9.x"
+    "@nestjs/common": "^10.x",
+    "@nestjs/core": "^10.x"
   },
   "publishConfig": {
     "access": "public"

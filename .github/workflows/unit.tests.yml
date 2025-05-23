@@ -1,6 +1,3 @@
-# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: Unit tests
 
 on:
@@ -15,19 +12,25 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [20.x]  # Updated Node version to meet Lerna 8+ requirements
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: npm
           cache-dependency-path: ./package-lock.json
-      - run: npx lerna bootstrap
-      - run: npx lerna run build
-      - run: npx lerna run test
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build packages
+        run: npx lerna run build
+
+      - name: Run tests
+        run: npx lerna run test
         env:
           CI: true

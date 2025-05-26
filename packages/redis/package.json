@@ -1,6 +1,6 @@
 {
   "name": "@terradharitri/sdk-nestjs-redis",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Dharitri SDK Nestjs redis client package",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TerraDharitri/drt-sdk-nestjs.git"
+    "url": "git+https://github.com/TerraDharitri/drt-nestjs-sdk.git"
   },
   "keywords": [
     "dharitri",
@@ -23,7 +23,7 @@
     "redis"
   ],
   "author": "DharitrI",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "devDependencies": {
     "@types/redis": "^2.8.32",
     "@typescript-eslint/eslint-plugin": "^5.12.0",

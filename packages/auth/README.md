@@ -17,7 +17,7 @@ npm install @terradharitri/sdk-nestjs-auth
 
 This package validates a payload signed by a DharitrI wallet. You can use the DharitrI Utils website to get a token you can use for testing.
 
-![image](https://github.com/TerraDharitri/drt-nestjs-sdk/assets/6889483/374a4e3a-f7d3-4bd9-a212-a8615c89ab53)
+![image](https://github.com/TerraDharitri/drt-sdk-nestjs/assets/6889483/374a4e3a-f7d3-4bd9-a212-a8615c89ab53)
 
 1. Navigate to [https://utils.dharitri.org/auth](https://utils.dharitri.org/auth) and choose the desired network from the select located in the upper right corner of the page
 2. Click the **Generate** button

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    // Import non-ES modules as default imports.
     "outDir": "./lib",
     "module": "commonjs",
     "declaration": true,
@@ -11,10 +12,15 @@
     "sourceMap": true,
     "baseUrl": "./",
     "incremental": true,
+    // enable strict null checks as a best practice
     "strictNullChecks": true,
+    // Search under node_modules for non-relative imports.
     "moduleResolution": "node",
+    // Process & infer types from .js files.
     "allowJs": true,
+    // Enable strictest settings like strictNullChecks & noImplicitAny.
     "strict": true,
+    // Import non-ES modules as default imports.
     "esModuleInterop": true,
     "alwaysStrict": true,
     "allowUnreachableCode": false,
@@ -25,7 +31,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
-    "importHelpers": true
+    "importHelpers": true,
   },
   "include": [
     "packages"

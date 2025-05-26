@@ -18,7 +18,7 @@
     },
     "docs": [
         "Source code for the pause module:",
-        "https://github.com/NumbatNetwork/numbat-wasm-rs/blob/master/numbat-wasm-modules/src/pause.rs"
+        "https://github.com/TerraDharitri/numbat-wasm-rs/blob/master/numbat-wasm-modules/src/pause.rs"
     ],
     "name": "Metabonding",
     "constructor": {

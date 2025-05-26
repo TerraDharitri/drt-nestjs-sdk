@@ -1,6 +1,6 @@
 {
   "name": "@terradharitri/sdk-nestjs-common",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Dharitri SDK Nestjs common package",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -40,7 +40,7 @@
     "winston": "^3.7.2"
   },
   "peerDependencies": {
-    "@terradharitri/sdk-nestjs-monitoring": "0.0.12",
+    "@terradharitri/sdk-nestjs-monitoring": "0.0.13",
     "@nestjs/common": "^10.x",
     "@nestjs/config": "^3.x",
     "@nestjs/core": "^10.x",

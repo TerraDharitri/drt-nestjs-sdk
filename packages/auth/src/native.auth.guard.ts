@@ -5,6 +5,7 @@ import { DecoratorUtils, DrtnestConfigService, DRTNEST_CONFIG_SERVICE, UrlUtils,
 import { PerformanceProfiler } from '@terradharitri/sdk-nestjs-monitoring';
 import { NativeAuthInvalidOriginError } from './errors/native.auth.invalid.origin.error';
 import { NoAuthOptions } from './decorators';
+import { NativeAuthServerConfig } from "@terradharitri/sdk-native-auth-server/lib/src/entities/native.auth.server.config";
 
 /**
  * This Guard protects all routes that do not have the `@NoAuth` decorator and sets the `X-Native-Auth-*` HTTP headers.
@@ -19,7 +20,7 @@ export class NativeAuthGuard implements CanActivate {
     @Inject(DRTNEST_CONFIG_SERVICE) drtnestConfigService: DrtnestConfigService,
     @Optional() cacheService?: CacheService,
   ) {
-    this.authServer = new NativeAuthServer({
+    const nativeAuthServerConfig: NativeAuthServerConfig = {
       apiUrl: drtnestConfigService.getApiUrl(),
       maxExpirySeconds: drtnestConfigService.getNativeAuthMaxExpirySeconds(),
       acceptedOrigins: drtnestConfigService.getNativeAuthAcceptedOrigins(),
@@ -45,7 +46,15 @@ export class NativeAuthGuard implements CanActivate {
           throw new Error('CacheService is not available in the context');
         },
       },
-    });
+    };
+
+    const acceptedOrigins = drtnestConfigService.getNativeAuthAcceptedOrigins();
+    const shouldAllowAllOrigins = acceptedOrigins && acceptedOrigins.length === 1 && acceptedOrigins[0] === '*';
+    if (shouldAllowAllOrigins) {
+      nativeAuthServerConfig.isOriginAccepted = () => true; // allow all origins
+    }
+
+    this.authServer = new NativeAuthServer(nativeAuthServerConfig);
   }
 
   static getOrigin(headers: Record<string, string>): string {

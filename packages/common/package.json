@@ -1,6 +1,6 @@
 {
   "name": "@terradharitri/sdk-nestjs-common",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Dharitri SDK Nestjs common package",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TerraDharitri/drt-nestjs-sdk.git"
+    "url": "git+https://github.com/TerraDharitri/drt-sdk-nestjs.git"
   },
   "keywords": [
     "dharitri",
@@ -34,13 +34,12 @@
   },
   "dependencies": {
     "@terradharitri/sdk-core": "0.1.8",
-    "@terradharitri/sdk-network-providers": "0.0.7",
     "nest-winston": "^1.6.2",
     "uuid": "^8.3.2",
     "winston": "^3.7.2"
   },
   "peerDependencies": {
-    "@terradharitri/sdk-nestjs-monitoring": "0.0.13",
+    "@terradharitri/sdk-nestjs-monitoring": "0.0.14",
     "@nestjs/common": "^10.x",
     "@nestjs/config": "^3.x",
     "@nestjs/core": "^10.x",

@@ -1,8 +1,7 @@
 
-import { ContractQueryResponse } from "@terradharitri/sdk-network-providers";
-import { INetworkProvider } from "@terradharitri/sdk-network-providers/out/interface";
-import { ResultsParser, SmartContract, Interaction, TypedOutcomeBundle } from "@terradharitri/sdk-core";
+import { ContractQueryResponse, ResultsParser, SmartContract, Interaction, TypedOutcomeBundle } from "@terradharitri/sdk-core";
 import { OriginLogger } from "../utils/origin.logger";
+import { INetworkProvider } from "./interfaces";
 
 export class ContractQueryRunner {
   private readonly logger = new OriginLogger(ContractQueryRunner.name);

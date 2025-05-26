@@ -1,8 +1,12 @@
 
-import { NetworkConfig } from "@terradharitri/sdk-network-providers";
-import { INetworkProvider } from "@terradharitri/sdk-network-providers/out/interface";
-import { Interaction, IAddress, Transaction } from "@terradharitri/sdk-core";
+import {
+  NetworkConfig,
+  Interaction,
+  IAddress,
+  Transaction,
+} from "@terradharitri/sdk-core";
 import { OriginLogger } from "../utils/origin.logger";
+import { INetworkProvider } from "./interfaces";
 
 export class ContractTransactionGenerator {
   private readonly logger = new OriginLogger(ContractTransactionGenerator.name);

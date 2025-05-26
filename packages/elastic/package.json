@@ -1,6 +1,6 @@
 {
   "name": "@terradharitri/sdk-nestjs-elastic",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Dharitri SDK Nestjs elastic package",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TerraDharitri/drt-nestjs-sdk.git"
+    "url": "git+https://github.com/TerraDharitri/drt-sdk-nestjs.git"
   },
   "keywords": [
     "dharitri",
@@ -31,7 +31,7 @@
     "typescript": "^4.3.5"
   },
   "peerDependencies": {
-    "@terradharitri/sdk-nestjs-http": "0.0.13",
+    "@terradharitri/sdk-nestjs-http": "0.0.14",
     "@nestjs/common": "^10.x"
   },
   "publishConfig": {

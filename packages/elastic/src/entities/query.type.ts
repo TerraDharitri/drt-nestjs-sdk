@@ -9,6 +9,8 @@ import { RangeQuery } from "./range.query";
 import { ShouldQuery } from "./should.query";
 import { WildcardQuery } from "./wildcard.query";
 import { StringQuery } from "./string.query";
+import { NestedShouldQuery } from "./nested.should.query";
+import { ScriptQuery } from "./script.query";
 
 export class QueryType {
   static Match = (key: string, value: any | undefined, operator: QueryOperator | undefined = undefined): MatchQuery => {
@@ -31,6 +33,10 @@ export class QueryType {
     return new NestedQuery(key, value);
   };
 
+  static NestedShould = (key: string, value: AbstractQuery[]): NestedShouldQuery => {
+    return new NestedShouldQuery(key, value);
+  };
+
   static Should = (queries: AbstractQuery[]): ShouldQuery => {
     return new ShouldQuery(queries);
   };
@@ -41,5 +47,9 @@ export class QueryType {
 
   static String = (key: string | string[], value: any | undefined): StringQuery => {
     return new StringQuery(key, value);
+  };
+
+  static Script = (source: string): ScriptQuery => {
+    return new ScriptQuery(source);
   };
 }

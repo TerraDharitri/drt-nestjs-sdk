@@ -1,5 +1,13 @@
-import { ApiNetworkProvider, AccountOnNetwork, NetworkConfig } from "@terradharitri/sdk-network-providers";
-import { IAddress, SmartContract, Address, ContractFunction, Interaction } from "@terradharitri/sdk-core";
+import {
+  IAddress,
+  SmartContract,
+  Address,
+  ContractFunction,
+  Interaction,
+  ApiNetworkProvider,
+  AccountOnNetwork,
+  NetworkConfig
+} from "@terradharitri/sdk-core";
 import { ContractTransactionGenerator } from "../../src/sc.interactions/contract.transaction.generator";
 
 const TEST_ADDRESS = "drt1wtm3yl58vcnj089lqy3tatkdpwklffh4pjnf27zwsa2znjyk355sph22rf";

@@ -7,7 +7,6 @@ This package contains a set of utilities commonly used in the DharitrI Microserv
 It relies on the following peer dependencies which must be installed in the parent package:
 
 - @terradharitri/sdk-core
-- @terradharitri/sdk-wallet
 - @nestjs/common v9
 - @nestjs/swagger v9
 

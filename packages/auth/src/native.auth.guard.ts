@@ -35,15 +35,14 @@ export class NativeAuthGuard implements CanActivate {
           if (cacheService) {
             return await cacheService.get<T>(key);
           }
-
-          throw new Error('CacheService is not available in the context');
+          return undefined;
         },
         setValue: async function <T>(key: string, value: T, ttl: number): Promise<void> {
           if (cacheService) {
             return await cacheService.set<T>(key, value, ttl);
           }
 
-          throw new Error('CacheService is not available in the context');
+          return undefined;
         },
       },
     };
@@ -130,9 +129,9 @@ export class NativeAuthGuard implements CanActivate {
           request.res.set('X-Native-Auth-Error-Message', message);
           request.res.set('X-Native-Auth-Duration', profiler.duration);
         }
+        return false;
       }
-
-      return false;
+        throw error;
     }
   }
 }

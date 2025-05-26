@@ -1,6 +1,6 @@
 {
   "name": "@terradharitri/sdk-nestjs-cache",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Dharitri SDK Nestjs cache package",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TerraDharitri/drt-nestjs-sdk.git"
+    "url": "git+https://github.com/TerraDharitri/drt-sdk-nestjs.git"
   },
   "keywords": [
     "dharitri",
@@ -40,9 +40,9 @@
     "uuid": "^8.3.2"
   },
   "peerDependencies": {
-    "@terradharitri/sdk-nestjs-common": "0.0.13",
-    "@terradharitri/sdk-nestjs-monitoring": "0.0.13",
-    "@terradharitri/sdk-nestjs-redis": "0.0.13",
+    "@terradharitri/sdk-nestjs-common": "0.0.14",
+    "@terradharitri/sdk-nestjs-monitoring": "0.0.14",
+    "@terradharitri/sdk-nestjs-redis": "0.0.14",
     "@nestjs/common": "^10.x",
     "@nestjs/core": "^10.x"
   },

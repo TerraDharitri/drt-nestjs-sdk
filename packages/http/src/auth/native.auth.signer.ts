@@ -1,7 +1,6 @@
 import { NativeAuthClient } from '@terradharitri/sdk-native-auth-client';
 import { NativeAuthClientConfig } from '@terradharitri/sdk-native-auth-client/lib/src/entities/native.auth.client.config';
-import { UserSigner } from '@terradharitri/sdk-wallet';
-import { SignableMessage } from '@terradharitri/sdk-core';
+import { SignableMessage, UserSigner } from '@terradharitri/sdk-core';
 import { FileUtils } from '@terradharitri/sdk-nestjs-common/lib/utils/file.utils';
 import '@terradharitri/sdk-nestjs-common/lib/utils/extensions/date.extensions';
 

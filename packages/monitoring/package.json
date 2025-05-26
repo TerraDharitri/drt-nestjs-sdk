@@ -1,6 +1,6 @@
 {
   "name": "@terradharitri/sdk-nestjs-monitoring",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Dharitri SDK Nestjs monitoring package",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TerraDharitri/drt-sdk-nestjs.git"
+    "url": "git+https://github.com/TerraDharitri/drt-nestjs-sdk.git"
   },
   "keywords": [
     "dharitri",
@@ -23,7 +23,7 @@
     "monitoring"
   ],
   "author": "DharitrI",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.12.0",
     "@typescript-eslint/parser": "^5.16.0",

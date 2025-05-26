@@ -13,7 +13,7 @@ It relies on the following peer dependencies which must be installed in the pare
 
 ## Documentation
 
-- [Dharitri Docs](https://docs.dharitri.org/sdk-and-tools/drtnest/)
+- [Dharitri Docs](https://docs.dharitri.org/sdk-and-tools/sdk-nestjs)
 
 ## CHANGELOG
 

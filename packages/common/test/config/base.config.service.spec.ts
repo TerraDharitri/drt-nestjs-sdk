@@ -136,8 +136,8 @@ describe('BaseConfigService', () => {
   it('should retrieve a boolean value from .env with override', () => {
     configServiceMock.get.mockReturnValueOnce('bool:false')
 
-    const result = baseConfigService.get<string[]>('wrappedIdentifier.nested');
-    expect(configServiceMock.get).toHaveBeenCalledWith('DRT_OVERRIDE_WRAPPED_IDENTIFIER_NESTED')
+    const result = baseConfigService.get<string[]>('wrappedREWAIdentifier.nested');
+    expect(configServiceMock.get).toHaveBeenCalledWith('DRT_OVERRIDE_WRAPPED_REWA_IDENTIFIER_NESTED')
 
     expect(result).toBe(false);
   });

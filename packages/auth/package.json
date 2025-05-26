@@ -1,6 +1,6 @@
 {
   "name": "@terradharitri/sdk-nestjs-auth",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Dharitri SDK Nestjs auth package",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -34,13 +34,13 @@
   "dependencies": {
     "@terradharitri/sdk-core": "0.1.8",
     "@terradharitri/sdk-native-auth-server": "0.0.4",
-    "@terradharitri/sdk-wallet": "0.0.9",
+    "@terradharitri/sdk-wallet": "0.0.7",
     "jsonwebtoken": "^9.0.0"
   },
   "peerDependencies": {
-    "@terradharitri/sdk-nestjs-cache": "0.0.7",
-    "@terradharitri/sdk-nestjs-common": "0.0.7",
-    "@terradharitri/sdk-nestjs-monitoring": "0.0.7",
+    "@terradharitri/sdk-nestjs-cache": "0.0.8",
+    "@terradharitri/sdk-nestjs-common": "0.0.8",
+    "@terradharitri/sdk-nestjs-monitoring": "0.0.8",
     "@nestjs/common": "^10.x"
   },
   "publishConfig": {

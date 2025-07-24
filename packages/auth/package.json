@@ -1,6 +1,6 @@
 {
   "name": "@terradharitri/sdk-nestjs-auth",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Dharitri SDK Nestjs auth package",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TerraDharitri/drt-nestjs-sdk.git"
+    "url": "git+https://github.com/TerraDharitri/drt-sdk-nestjs.git"
   },
   "keywords": [
     "dharitri",
@@ -37,10 +37,10 @@
     "jsonwebtoken": "^9.0.0"
   },
   "peerDependencies": {
-    "@nestjs/common": "^10.x",
-    "@terradharitri/sdk-nestjs-cache": "0.0.15",
-    "@terradharitri/sdk-nestjs-common": "0.0.15",
-    "@terradharitri/sdk-nestjs-monitoring": "0.0.15"
+    "@terradharitri/sdk-nestjs-cache": "0.0.16",
+    "@terradharitri/sdk-nestjs-common": "0.0.16",
+    "@terradharitri/sdk-nestjs-monitoring": "0.0.16",
+    "@nestjs/common": "^10.x"
   },
   "publishConfig": {
     "access": "public"

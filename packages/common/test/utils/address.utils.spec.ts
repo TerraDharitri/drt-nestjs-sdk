@@ -17,7 +17,7 @@ describe('Address utils', () => {
 
   it('compute shard for address', () => {
     expect(AddressUtils.computeShard(AddressUtils.bech32Decode('drt1rf4hv70arudgzus0ymnnsnc4pml0jkywg2xjvzslg0mz4nn2tg7qr2cgel'), 3)).toEqual(0);
-    expect(AddressUtils.computeShard(AddressUtils.bech32Decode('drt1yvesqqqqqqqqqqqqqqqqqqqqqqqqyvesqqqqqqqqqqqqqqqplllsphc9lf'), 3)).toEqual(4294967295);
+    expect(AddressUtils.computeShard(AddressUtils.bech32Decode('drt1yvesqqqqqqqqqqqqqqqqqqqqqqqqyvesqqqqqqqqqqqqqqqplllsphc9lf'), 3)).toEqual(1);
     expect(AddressUtils.computeShard(AddressUtils.bech32Decode('drt1yghjyzgq03vlmmav3cvdkcjqmnagq9u0qd7sqvt9060um88lxdrqr78apr'), 3)).toEqual(2);
 
     expect(AddressUtils.computeShard(AddressUtils.bech32Decode('drt1kyaqzaprcdnv4luvanah0gfxzzsnpaygsy6pytrexll2urtd05tscswtlq'), 1)).toEqual(0);

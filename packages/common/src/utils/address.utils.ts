@@ -43,7 +43,7 @@ export class AddressUtils {
     const lastByteOfPubKey = pubKey[31];
 
     if (AddressUtils.isAddressOfMetachain(pubKey)) {
-      return 4294967295;
+      return 1;
     }
 
     let shard = lastByteOfPubKey & maskHigh;
@@ -60,7 +60,7 @@ export class AddressUtils {
       return true;
     }
 
-    if (address === '4294967295') {
+    if (address === '1') {
       return true;
     }
 
@@ -77,7 +77,7 @@ export class AddressUtils {
   private static isAddressOfMetachain(pubKey: Buffer) {
     // prettier-ignore
     const metachainPrefix = Buffer.from([
-      35, 51, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 51, 48, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     ]);
     const pubKeyPrefix = pubKey.slice(0, metachainPrefix.length);
 

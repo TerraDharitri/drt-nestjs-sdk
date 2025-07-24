@@ -8,7 +8,7 @@ export class ParseAddressAndMetachainPipe implements PipeTransform<string | unde
         return resolve(undefined);
       }
 
-      if (value == "4294967295") {
+      if (value == "1") {
         return resolve(value);
       }
 
